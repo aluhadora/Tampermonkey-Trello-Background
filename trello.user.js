@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trello background
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Make myself feel less like a plebian
 // @author       You
 // @include      https://trello.com/b/*/todo
