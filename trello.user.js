@@ -4,9 +4,9 @@
 // @version      0.1
 // @description  Make myself feel less like a plebian
 // @author       You
-// @match        https://trello.com/b/cPdwnyOA/todo
+// @include      https://trello.com/b/*/todo
 // @grant        none
-// @require http://code.jquery.com/jquery-latest.js
+// @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
 /* jshint -W097 */
 'use strict';
