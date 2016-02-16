@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trello background
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Make myself feel less like a plebian
 // @author       You
 // @include      https://trello.com/b/*/todo
@@ -42,9 +42,11 @@ function main() {
       console.log(index);
       
       url = JsonData.data.children[index].data.url;
-      console.log(url);
+      preview = JsonData.data.children[index].data.preview.images[0].source.url;
+      console.log("url: " + url);
+      console.log("preview: " + preview);
       
-      $('body').css('background-image', 'url(' + checkImgur(url) + ')');
+      $('body').css('background-image', 'url(' + checkImgur(preview) + ')');
   });
     
   
@@ -60,3 +62,27 @@ function start() {
 
 start();
 window.setInterval(start, 300000);
+
+window.addEventListener("load", function(e) {
+  addButton();
+}, false);
+ 
+function addButton(){
+    var btn = document.createElement( 'input' );
+    with( btn ) {
+        setAttribute( 'onclick', start );
+        setAttribute( 'value', 'Change BG' );
+        setAttribute( 'type', 'button' );
+        setAttribute( 'id', 'bg-button' );
+        setAttribute( 'class', 'header-btn' );
+    }
+
+    // append at end
+    document.getElementsByClassName( 'header-user' )[ 0 ].appendChild( btn );
+    addButtonListener();
+}
+ 
+function addButtonListener(){
+  var button = document.getElementById("bg-button");
+  button.addEventListener('click',start,true);
+}
