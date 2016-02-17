@@ -22,10 +22,6 @@ function addJQuery(callback) {
   document.body.appendChild(script);
 }
 
-function parseImgur(url) {
-  alert(url);
-}
-
 function main() {
     
     function checkImgur(url) {
@@ -36,7 +32,7 @@ function main() {
         return(url.replace(/imgur/, 'i.imgur').replace(/imgur\.com\/(.*)/, 'imgur.com/$1.png'));
     }
     
-  $.getJSON('https://www.reddit.com/r/earthporn/top.json?limit=15', {}, function(JsonData){
+  $.getJSON('https://www.reddit.com/r/earthporn/top.json?limit=15', {}, function(JsonData) {
   
       var index = Math.floor((Math.random() * 15));
       console.log(index);
@@ -67,7 +63,7 @@ window.addEventListener("load", function(e) {
   addButton();
 }, false);
  
-function addButton(){
+function addButton() {
     var btn = document.createElement( 'a' );
     with( btn ) {
         setAttribute( 'class', 'header-btn' );
@@ -93,7 +89,7 @@ function addButton(){
     addButtonListener();
 }
  
-function addButtonListener(){
+function addButtonListener() { 
   var button = document.getElementById("bg-button");
   button.addEventListener('click',start,true);
 }
