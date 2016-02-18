@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trello background
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.6.1
 // @description  Make myself feel less like a plebian
 // @author       You
 // @include      https://trello.com/b/*/todo
@@ -63,7 +63,6 @@ function addButton() {
     var btn = document.createElement( 'a' );
     with( btn ) {
         setAttribute( 'class', 'header-btn' );
-        setAttribute( 'onclick', main );
         setAttribute( 'id', 'bg-button' );
         setAttribute( 'href', '#' );
     }
