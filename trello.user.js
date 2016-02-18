@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trello background
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Make myself feel less like a plebian
 // @author       You
 // @include      https://trello.com/b/*/todo
@@ -46,17 +46,13 @@ function main() {
   });
     
   
-  $('body').css('background-size', 'contain');
+  $('body').css('background-size', '100%');
   $('body').css('background-repeat', 'no-repeat');
   $('body').css('background-position', 'center');
 }
 
 // load jQuery and execute the main function
-function start() {
-    addJQuery(main);
-}
-
-start();
+addJQuery(main);
 window.setInterval(main, 300000);
 
 window.addEventListener("load", function(e) {
