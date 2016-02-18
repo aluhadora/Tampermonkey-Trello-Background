@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trello background
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Make myself feel less like a plebian
 // @author       You
 // @include      https://trello.com/b/*/todo
@@ -57,7 +57,7 @@ function start() {
 }
 
 start();
-window.setInterval(start, 300000);
+window.setInterval(main, 300000);
 
 window.addEventListener("load", function(e) {
   addButton();
@@ -67,7 +67,7 @@ function addButton() {
     var btn = document.createElement( 'a' );
     with( btn ) {
         setAttribute( 'class', 'header-btn' );
-        setAttribute( 'onclick', start );
+        setAttribute( 'onclick', main );
         setAttribute( 'id', 'bg-button' );
         setAttribute( 'href', '#' );
     }
@@ -91,5 +91,5 @@ function addButton() {
  
 function addButtonListener() { 
   var button = document.getElementById("bg-button");
-  button.addEventListener('click',start,true);
+  button.addEventListener('click',main,true);
 }
