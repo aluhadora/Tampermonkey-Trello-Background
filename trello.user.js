@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trello background
 // @namespace    http://tampermonkey.net/
-// @version      0.6.1
+// @version      0.7
 // @description  Make myself feel less like a plebian
 // @author       You
 // @include      https://trello.com/b/*/todo
@@ -24,31 +24,22 @@ function addJQuery(callback) {
 
 function main() {
     
-    function checkImgur(url) {
-        if (url.match(/imgur.com/) == null) return(url);
-        if (url.match(/i\.imgur\.com/) != null) return(url);
-        
-        console.log(url);
-        return(url.replace(/imgur/, 'i.imgur').replace(/imgur\.com\/(.*)/, 'imgur.com/$1.png'));
-    }
-    
+  var body = $('body');
+
   $.getJSON('https://www.reddit.com/r/earthporn/top.json?limit=15', {}, function(JsonData) {
   
       var index = Math.floor((Math.random() * 15));
-      console.log(index);
-      
       url = JsonData.data.children[index].data.url;
       preview = JsonData.data.children[index].data.preview.images[0].source.url;
-      console.log("url: " + url);
-      console.log("preview: " + preview);
       
-      $('body').css('background-image', 'url(' + checkImgur(preview) + ')');
+      console.log('reddit index: ' + index + '; url: "' + url + '"; preview: "' + preview + '";');
+      
+      body.css('background-image', 'url(' + preview + ')');
   });
-    
-  
-  $('body').css('background-size', '100%');
-  $('body').css('background-repeat', 'no-repeat');
-  $('body').css('background-position', 'center');
+
+  body.css('background-size', '100%');
+  body.css('background-repeat', 'no-repeat');
+  body.css('background-position', 'center');
 }
 
 // load jQuery and execute the main function
